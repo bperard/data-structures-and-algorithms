@@ -119,7 +119,7 @@ const characters = [
     house: 'Stark',
   },
   {
-    name: 'Jon S.',
+    name: 'Jon',
     spouse: null,
     house: 'Snow',
   },
@@ -163,12 +163,23 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
-  return arr.map(currCharacter => {
+  const nameAndInitial = character.split(' ');
+  let hasChildren = null;
+  for (let currCharacter of arr) {
     const entriesArray = Object.entries(currCharacter);
-    if (entriesArray[0][1] === character) {
-      return entriesArray[2][0] === 'children';
+    if (nameAndInitial.length === 1 && entriesArray[0][1] === nameAndInitial[0]) {
+      hasChildren = entriesArray[2][0] === 'children';
+    } else if (entriesArray[0][1] === nameAndInitial[0]) {
+      const flattenedArray = [];
+      for (let array of entriesArray) {
+        flattenedArray.push(...array);
+      }
+      if (flattenedArray[flattenedArray.indexOf('house') + 1].charAt(0) === nameAndInitial[1].charAt(0)) {
+        hasChildren = flattenedArray[4] === 'children';
+      }
     }
-  }).filter(result => result !== undefined)[0];
+  }
+  return hasChildren;
 };
 
 /* ------------------------------------------------------------------------------------------------
