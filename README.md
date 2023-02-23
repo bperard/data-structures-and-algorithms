@@ -21,3 +21,5 @@ To run your tests
 ### 401 Data Structures, Code Challenges
 
 - [Array Reverse](./javascript/array-reverse/README.md)
+- [Array Binary Search](./javascript/array-binary-search/README.md)
+- [Linked List Zip](./javascript/linked-list-zip/README.md)
