@@ -23,7 +23,8 @@ The class should contain the following methods:
 - isEmpty
 
 ## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+
+The class started the challenge together on Friday and then I used TDD to finish out the tests for each method according to the test requirements & method descriptions. Both stack & queue were implemented using a linked list as the storage mechanism. Methods were implemented with a time performance of O(1).
 
 ## API
 
