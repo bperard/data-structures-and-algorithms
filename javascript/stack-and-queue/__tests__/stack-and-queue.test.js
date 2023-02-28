@@ -1,6 +1,6 @@
 'use strict';
 
-const { Stack, Queue } = require('../index');
+const { Stack, Queue, PseudoQueue } = require('../index');
 
 describe('Stack', () => {
   it('push(value) sets stack.top to node with passed value', () => {
@@ -124,4 +124,8 @@ describe('Queue', () => {
     expect(contentQueue).toEqual(false);
     expect(emptyQueue).toEqual(true);
   });
+});
+
+describe('PseudoQueue', () => {
+
 });

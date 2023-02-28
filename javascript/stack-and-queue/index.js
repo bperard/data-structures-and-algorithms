@@ -94,4 +94,20 @@ class Queue {
   }
 }
 
-module.exports = { Stack, Queue };
+class PseudoQueue {
+  constructor() {
+    this.enqueueStack = new Stack();
+    this.dequeueStack = new Stack();
+    this.enqueueSelected = true;
+  }
+
+  enqueue() {
+
+  }
+
+  dequeue() {
+
+  }
+}
+
+module.exports = { Stack, Queue, PseudoQueue };
