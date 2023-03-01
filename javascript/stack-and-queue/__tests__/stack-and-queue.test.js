@@ -1,6 +1,6 @@
 'use strict';
 
-const { Stack, Queue, PseudoQueue } = require('../index');
+const { Stack, Queue, PseudoQueue, AnimalShelter } = require('../index');
 
 describe('Stack', () => {
   it('push(value) sets stack.top to node with passed value', () => {
@@ -127,5 +127,9 @@ describe('Queue', () => {
 });
 
 describe('PseudoQueue', () => {
+
+});
+
+describe('AnimalShelter', () => {
 
 });

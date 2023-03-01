@@ -98,11 +98,25 @@ class PseudoQueue {
   constructor() {
     this.enqueueStack = new Stack();
     this.dequeueStack = new Stack();
-    this.enqueueSelected = true;
+    this.top = null;
+    this.back = null;
   }
 
   enqueue() {
-
+    // if (!this.top && !this.back) {
+    //   const stack = new Stack();
+    //   stack.push(value);
+    //   this.top = stack;
+    //   this.back = stack;
+    // } else if (!this.top && this.back) {
+    //   this.back.push(value);
+    // } else
+    try {
+      this.enqueueStack.peek();
+    } catch(err) {
+      this.top = 'here';
+      console.log(this.top);
+    }
   }
 
   dequeue() {
@@ -110,4 +124,22 @@ class PseudoQueue {
   }
 }
 
-module.exports = { Stack, Queue, PseudoQueue };
+class AnimalShelter {
+  constructor() {
+    this.cat = new Queue();
+    this.dog = new Queue();
+  }
+
+  enqueue(animal) {
+
+  }
+
+  dequeue(pref) {
+
+  }
+}
+
+module.exports = { Stack, Queue, PseudoQueue, AnimalShelter };
+
+const pq = new PseudoQueue();
+pq.enqueue();
