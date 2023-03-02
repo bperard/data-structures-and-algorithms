@@ -22,4 +22,9 @@ To run your tests
 
 - [Array Reverse](./javascript/array-reverse/README.md)
 - [Array Binary Search](./javascript/array-binary-search/README.md)
+- [Linked List](./javascript/linked-list/README.md)
+- [Linked List Insertions](./javascript/linked-list-insertions/)
 - [Linked List Zip](./javascript/linked-list-zip/README.md)
+- [Stack & Queue](./javascript/stack-and-queue/README.md)
+- [Stack Queue Pseudo](./javascript/stack-queue-pseudo/README.md)
+- [Multi-Bracket Validation](./javascript/multi-bracket-validation/README.md)
