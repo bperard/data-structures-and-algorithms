@@ -27,3 +27,4 @@ To run your tests
 - [Linked List Zip](./javascript/linked-list-zip/README.md)
 - [Stack & Queue](./javascript/stack-and-queue/README.md)
 - [Stack Queue Pseudo](./javascript/stack-queue-pseudo/README.md)
+- [Multi-Bracket Validation](./javascript/multi-bracket-validation/README.md)
