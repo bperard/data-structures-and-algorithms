@@ -116,26 +116,68 @@ class Tree {
     traverse(this.root);
     return results;
   }
+
+  treeFizzBuzzPreOrder() {
+    const fizzBuzzSwap = (value) => {
+      let fBValue = '';
+
+      if (value % 3 === 0) {
+        fBValue += 'Fizz';
+      }
+      if (value % 5 === 0) {
+        fBValue += 'Buzz';
+      }
+      if (!fBValue) {
+        fBValue = value;
+      }
+
+      return fBValue;
+    };
+
+    const fBTree = new Tree();
+    fBTree.root = new Node();
+
+    const traverse = (node, emptyNode) => {
+      emptyNode.value = fizzBuzzSwap(node.value);
+
+      if (node.left) {
+        const newNode = new Node();
+        emptyNode.left = newNode;
+        traverse(node.left, newNode);
+      }
+      if (node.right) {
+        const newNode = new Node();
+        emptyNode.right = newNode;
+        traverse(node.right, newNode);
+      }
+    };
+
+    traverse(this.root, fBTree.root);
+    return fBTree;
+  }
 }
 
 let tree = new Tree();
 
-tree.breadthBinaryTreeBuild(['A', 'B', 'C', 'D', 'E', 'F']);
+// tree.breadthBinaryTreeBuild(['A', 'B', 'C', 'D', 'E', 'F']);
 
-const inResults = tree.inOrder();
-const postResults = tree.postOrder();
-const preResults = tree.preOrder();
-console.log('D, B, E, A, F, C', inResults);
-console.log('D, E, B, F, C, A', postResults);
-console.log('A, B, D, E, C, F', preResults);
+// const inResults = tree.inOrder();
+// const postResults = tree.postOrder();
+// const preResults = tree.preOrder();
+// console.log('D, B, E, A, F, C', inResults);
+// console.log('D, E, B, F, C, A', postResults);
+// console.log('A, B, D, E, C, F', preResults);
 
-tree.breadthBinaryTreeBuild(['A', 'B', 'C', null, 'D', 'E', 'F']);
+// tree.breadthBinaryTreeBuild(['A', 'B', 'C', null, 'D', 'E', 'F']);
 
-const inResults2 = tree.inOrder();
-const postResults2 = tree.postOrder();
-const preResults2 = tree.preOrder();
-console.log('B, D, A, E, C, F', inResults2);
-console.log('D, B, E, F, C, A', postResults2);
-console.log('A, B, D, C, E, F', preResults2);
+// const inResults2 = tree.inOrder();
+// const postResults2 = tree.postOrder();
+// const preResults2 = tree.preOrder();
+// console.log('B, D, A, E, C, F', inResults2);
+// console.log('D, B, E, F, C, A', postResults2);
+// console.log('A, B, D, C, E, F', preResults2);
+
+tree.breadthBinaryTreeBuild([1, 3, 5, 15, 8, 43, 36, 38, 45, 6, 7]);
+// console.log(fbtree);
 
 module.exports = { Node, Tree };
