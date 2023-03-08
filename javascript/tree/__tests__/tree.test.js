@@ -24,24 +24,34 @@ describe('Tree', () => {
     const results = traversalTree.preOrder();
     const nullResults = nullTraversalTree.preOrder();
 
-    expect(results).toEqual([ 'A', 'B', 'D', 'E', 'C', 'F' ]);
-    expect(nullResults).toEqual([ 'A', 'B', 'D', 'C', 'E', 'F' ]);
+    expect(results).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
+    expect(nullResults).toEqual(['A', 'B', 'D', 'C', 'E', 'F']);
   });
 
   it('Can successfully return a collection from a inorder traversal', () => {
     const results = traversalTree.inOrder();
     const nullResults = nullTraversalTree.inOrder();
 
-    expect(results).toEqual([ 'D', 'B', 'E', 'A', 'F', 'C' ]);
-    expect(nullResults).toEqual([ 'B', 'D', 'A', 'E', 'C', 'F' ]);
+    expect(results).toEqual(['D', 'B', 'E', 'A', 'F', 'C']);
+    expect(nullResults).toEqual(['B', 'D', 'A', 'E', 'C', 'F']);
   });
 
   it('Can successfully return a collection from a postorder traversal', () => {
     const results = traversalTree.postOrder();
     const nullResults = nullTraversalTree.postOrder();
 
-    expect(results).toEqual([ 'D', 'E', 'B', 'F', 'C', 'A' ]);
-    expect(nullResults).toEqual([ 'D', 'B', 'E', 'F', 'C', 'A' ]);
+    expect(results).toEqual(['D', 'E', 'B', 'F', 'C', 'A']);
+    expect(nullResults).toEqual(['D', 'B', 'E', 'F', 'C', 'A']);
+  });
+
+  it('Accepts a tree as input and outputs a new tree with "FizzBuzz" adjusted values', () => {
+    const fizzBuzzStarterTree = new Tree();
+    fizzBuzzStarterTree.breadthBinaryTreeBuild([38, 36, 105, 7, 43, 55, 41, 108, 202, 305]);
+    const resultsTree = fizzBuzzStarterTree.treeFizzBuzzPreOrder();
+    const resultsArray = resultsTree.preOrder();
+
+    expect(resultsArray).toEqual([38, 'Fizz', 7, 'Fizz', 202,
+      43, 'Buzz', 'FizzBuzz', 'Buzz', 41]);
   });
 });
 
