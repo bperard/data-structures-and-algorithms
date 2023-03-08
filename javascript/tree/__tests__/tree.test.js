@@ -1,27 +1,49 @@
 'use strict';
 
-
-const { Node, Tree } = require('./index');
+const { Node, Tree } = require('../index');
 
 describe('Tree', () => {
-  let tree = new Tree();
-  tree.root = new Node(10);
-  tree.root.left = new Node(5);
-  tree.root.right = new Node(15);
-  tree.root.left.left = new Node(1);
-  tree.root.left.right = new Node(8);
-  tree.root.right.right = new Node(17);
+  // it('', () => {
 
-  it('can be created as expected', () => {
+  // });
 
-    expect(tree.root.value).toEqual(10);
-    expect(tree.root.right.left).toBeNull();
+  it('Can successfully instantiate an empty tree with single root node', () => {
+    const tree = new Tree();
 
+    expect(tree).toBeTruthy();
+    expect(tree.root).toBeNull();
   });
 
-  it('returns pre-order array as expected', () => {
-    const results = tree.preOrder();
+  const traversalTree = new Tree();
+  traversalTree.breadthBinaryTreeBuild(['A', 'B', 'C', 'D', 'E', 'F']);
 
-    expect(results).toEqual([10, 5, 1, 8, 15, 17]);
+  const nullTraversalTree = new Tree();
+  nullTraversalTree.breadthBinaryTreeBuild(['A', 'B', 'C', null, 'D', 'E', 'F']);
+
+  it('Can successfully return a collection from a preorder traversal', () => {
+    const results = traversalTree.preOrder();
+    const nullResults = nullTraversalTree.preOrder();
+
+    expect(results).toEqual([ 'A', 'B', 'D', 'E', 'C', 'F' ]);
+    expect(nullResults).toEqual([ 'A', 'B', 'D', 'C', 'E', 'F' ]);
+  });
+
+  it('Can successfully return a collection from a inorder traversal', () => {
+    const results = traversalTree.inOrder();
+    const nullResults = nullTraversalTree.inOrder();
+
+    expect(results).toEqual([ 'D', 'B', 'E', 'A', 'F', 'C' ]);
+    expect(nullResults).toEqual([ 'B', 'D', 'A', 'E', 'C', 'F' ]);
+  });
+
+  it('Can successfully return a collection from a postorder traversal', () => {
+    const results = traversalTree.postOrder();
+    const nullResults = nullTraversalTree.postOrder();
+
+    expect(results).toEqual([ 'D', 'E', 'B', 'F', 'C', 'A' ]);
+    expect(nullResults).toEqual([ 'D', 'B', 'E', 'F', 'C', 'A' ]);
   });
 });
+
+// For a Binary Search Tree, can successfully add a left child and right child properly to a node
+// Returns true	false for the contains method, given an existing or non-existing node value
