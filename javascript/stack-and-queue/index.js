@@ -115,7 +115,6 @@ class PseudoQueue {
       this.enqueueStack.peek();
     } catch(err) {
       this.top = 'here';
-      console.log(this.top);
     }
   }
 

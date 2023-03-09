@@ -69,6 +69,7 @@ describe('Tree', () => {
 
     expect(results).toEqual(['A', 'W', 'E', 'S', '0', 'M', 'e']);
   });
+
 });
 
 // For a Binary Search Tree, can successfully add a left child and right child properly to a node
