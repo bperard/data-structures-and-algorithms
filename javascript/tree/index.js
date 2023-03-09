@@ -155,6 +155,25 @@ class Tree {
     traverse(this.root, fBTree.root);
     return fBTree;
   }
+
+  findMaxValuePreOrder() {
+    let currentMax = null;
+
+    const traverse = (node) => {
+      currentMax = currentMax > node.value ? currentMax : node.value;
+
+      if (node.left) {
+        traverse(node.left);
+      }
+      if (node.right) {
+        traverse(node.right);
+      }
+    };
+
+    traverse(this.root);
+    return currentMax;
+
+  }
 }
 
 let tree = new Tree();

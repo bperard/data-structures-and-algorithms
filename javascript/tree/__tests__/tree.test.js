@@ -53,6 +53,14 @@ describe('Tree', () => {
     expect(resultsArray).toEqual([38, 'Fizz', 7, 'Fizz', 202,
       43, 'Buzz', 'FizzBuzz', 'Buzz', 41]);
   });
+
+  it('Finds the maximum value stored in the tree', () => {
+    const maxTree = new Tree();
+    maxTree.breadthBinaryTreeBuild([38, 3, 14, 7, 28, 46]);
+    const foundMax = maxTree.findMaxValuePreOrder();
+
+    expect(foundMax).toEqual(46);
+  });
 });
 
 // For a Binary Search Tree, can successfully add a left child and right child properly to a node
