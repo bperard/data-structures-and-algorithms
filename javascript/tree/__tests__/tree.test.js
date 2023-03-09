@@ -61,6 +61,15 @@ describe('Tree', () => {
 
     expect(foundMax).toEqual(46);
   });
+
+  it('Returns all values in tree layer by layer, left to right', () => {
+    const checkTree = new Tree();
+    checkTree.breadthBinaryTreeBuild(['A', 'W', 'E', 'S', '0', 'M', 'e']);
+    const results = checkTree.breadthFirst();
+
+    expect(results).toEqual(['A', 'W', 'E', 'S', '0', 'M', 'e']);
+  });
+
 });
 
 // For a Binary Search Tree, can successfully add a left child and right child properly to a node

@@ -174,6 +174,29 @@ class Tree {
     return currentMax;
 
   }
+
+  breadthFirst() {
+    const queue = new Queue();
+    const results = [];
+
+    const traverse = (node) => {
+      results.push(node.value);
+
+      if (node.left) {
+        queue.enqueue(node.left);
+      }
+      if (node.right) {
+        queue.enqueue(node.right);
+      }
+
+      if (!queue.isEmpty()) {
+        traverse(queue.dequeue());
+      }
+    };
+
+    traverse(this.root);
+    return results;
+  }
 }
 
 let tree = new Tree();
