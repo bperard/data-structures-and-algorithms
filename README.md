@@ -33,3 +33,4 @@ To run your tests
 - [Tree Max](./javascript/tree-max/README.md)
 - [Tree Breath First](./javascript/tree-breadth-first/README.md)
 - [Tree Fizz Buzz](./javascript/tree-fizz-buzz/README.md)
+- [Sorting Insertion](./sorting/insertion/README.md)
