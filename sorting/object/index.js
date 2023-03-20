@@ -1,8 +1,6 @@
 'use strict';
 
-const { Movies } = require('./movies');
 
-// need to write the "callback" compareYear
 function sortYear(arr) {
   arr.sort((a, b) => compareYear(a, b));
 
@@ -11,7 +9,6 @@ function sortYear(arr) {
 
 
 function compareYear(movieA, movieB) {
-  //do the thing
   return movieA.year < movieB.year ? 1 :
     movieA.year > movieB.year ? -1 : 0;
 }
@@ -24,12 +21,12 @@ function sortTitle(arr) {
 
 
 function compareTitle(movieA, movieB) {
-  //do the thing
+  movieA = movieA.title.replace(/^(The|A|An)\s/g, '');
+  movieB = movieB.title.replace(/^(The|A|An)\s/g, '');
 
-  return movieA.title < movieB.title ? -1 :
-    movieA.title > movieB.title ? 1 : 0;
+  return movieA < movieB ? -1 :
+    movieA > movieB ? 1 : 0;
 }
 
 
-console.log(sortYear(Movies));
 module.exports = { sortYear, compareYear, sortTitle, compareTitle };
