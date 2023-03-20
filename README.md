@@ -35,3 +35,4 @@ To run your tests
 - [Tree Fizz Buzz](./javascript/tree-fizz-buzz/README.md)
 - [Insertion Sorting](./sorting/insertion/README.md)
 - [Merge Sorting](./sorting/merge/README.md)
+- [Object Sorting](./sorting/object/README.md)
