@@ -84,4 +84,4 @@ Time: the algorithm loops through all elements, and then also internally loops t
 ## Implementation
 
 [Code](index.js)
-[Tests](./__test__/insertion-sort.test.js)
+[Tests](./__tests__/insertion-sort.test.js)
