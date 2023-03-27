@@ -1,27 +1,49 @@
 'use strict';
 
 class Hashtable {
-  constructor() {
-
+  constructor(size) {
+    this.size = size;
+    this.buckets = new Array(size);
   }
 
-// set
-// Arguments: key, value
-// Returns: nothing
-// This method should hash the key, and set the key and value pair in the table, handling collisions as needed.
-// Should a given key already exist, replace its value from the value argument given to this method.
-// get
-// Arguments: key
-// Returns: Value associated with that key in the table
-// has
-// Arguments: key
-// Returns: Boolean, indicating if the key exists in the table already.
-// keys
-// Returns: Collection of keys
-// hash
-// Arguments: key
-// Returns: Index in the collection for that key
+  hash(key) {
+    const chars = key.split('');
+    const asciiSum = chars.reduce((sum, char) => {
+      return sum + char.charCodeAt(0);
+    }, 0);
+    const primeProduct = asciiSum * 599;
+    return primeProduct % this.size;
+  }
+
+  set(key, value) {
+    const hashedKey = this.hash(key);
+    this.buckets[hashedKey] = value;
+  }
+
+  get(key) {
+    const hashedKey = this.hash(key);
+
+    return this.buckets[hashedKey] ? this.buckets[hashedKey] : null;
+  }
+
+  has(key) {
+    const hashedKey = this.hash(key);
+
+    return this.buckets[hashedKey] ? true : false;
+  }
+
+  keys() {
+    const keys = [];
+    this.buckets.forEach((element, index) => {
+      if(element) {
+        keys.push(index);
+      }
+    });
+
+    return keys;
+  }
 
 }
 
-module.exports = LinkedList;
+
+module.exports = Hashtable;
