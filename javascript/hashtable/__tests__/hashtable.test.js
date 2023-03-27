@@ -57,4 +57,13 @@ describe('Hashtable', () => {
     expect(newHash.hash(key)).toEqual(keyHash);
   });
 
+  it('Returns the first repeated word or no match', () => {
+    const newHash = new Hashtable(1024);
+    const match = newHash.repeatedWord('Once upon a time, there was a brave princess who...');
+    const nope = newHash.repeatedWord('Yo what is up?');
+
+    expect(match).toEqual('a');
+    expect(nope).toEqual('No match');
+  });
+
 });

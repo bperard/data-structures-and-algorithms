@@ -37,4 +37,4 @@ To run your tests
 - [Merge Sorting](./sorting/merge/README.md)
 - [Object Sorting](./sorting/object/README.md)
 - [Hashtable](./javascript/hashtable/README.md)
-- [Hastable Repeated Word](./javascript/)
+- [Hashmap Repeated Word](./javascript/)

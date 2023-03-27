@@ -35,7 +35,7 @@ class Hashtable {
   keys() {
     const keys = [];
     this.buckets.forEach((element, index) => {
-      if(element) {
+      if (element) {
         keys.push(index);
       }
     });
@@ -43,7 +43,32 @@ class Hashtable {
     return keys;
   }
 
+  repeatedWord(string) {
+    const words = string.split(' ');
+    let i = 0;
+    let match = '';
+
+    while (i < words.length) {
+      const key = this.hash(words[i]);
+      if (this.buckets[key] === words[i]) {
+        match = words[i];
+      }
+
+      this.buckets[key] = words[i];
+      i++;
+    }
+
+    if(match) {
+      return match;
+    } else {
+      return 'No match';
+    }
+  }
+
 }
 
+
+const newHash = new Hashtable(1024);
+console.log(newHash.repeatedWord('Once upon as the het the time, there was a brave princess who...'));
 
 module.exports = Hashtable;
