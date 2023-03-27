@@ -20,10 +20,14 @@ Arguments: key
 Returns: Index in the collection for that key
 
 ## Whiteboard Process
-<!-- Embedded whiteboard image -->
+
+![Hashtable Whiteboard](../assets/430Hashtable.png)
 
 ## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+
+Hashtable implementation was mobbed in lecture. The Hashtable is given a size to determine this.buckets array length. hash() converts input key into an integer value within the range of this.buckets array range. In the case of a collision (bucket already has a value), the new value overwrites the previous value. When getting a value, input key is converted using hash() and then calls the relevant bucket directly, returning the value or null if no value is present. keys() returns indices of this.buckets if they contain a value.
+
+By creating a strucuture that allows direct retrieval of a value, when the key is input, we get a Big O time of O(1).
 
 ## Solution
 
