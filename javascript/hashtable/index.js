@@ -7,6 +7,7 @@ class Hashtable {
   }
 
   hash(key) {
+    key = key.toString();
     const chars = key.split('');
     const asciiSum = chars.reduce((sum, char) => {
       return sum + char.charCodeAt(0);
@@ -58,17 +59,45 @@ class Hashtable {
       i++;
     }
 
-    if(match) {
+    if (match) {
       return match;
     } else {
       return 'No match';
     }
   }
 
+  treeIntersection(tree1, tree2) {
+    let add = true;
+    const sharedArray = [];
+
+    const traverseAddOrCheck = (node) => {
+      const key = this.hash(node.value);
+
+      if (add) {
+        if (!this.buckets[key]) {
+          this.buckets[key] = [];
+        }
+        this.buckets[key].push(node.value);
+      } else if (this.buckets[key] && this.buckets[key].includes(node.value)) {
+        sharedArray.push(node.value);
+      }
+
+      if (node.left) {
+        traverseAddOrCheck(node.left);
+      }
+      if (node.right) {
+        traverseAddOrCheck(node.right);
+      }
+    };
+
+    traverseAddOrCheck(tree1.root);
+    add = false;
+    traverseAddOrCheck(tree2.root);
+
+    return sharedArray;
+  }
+
 }
 
-
-const newHash = new Hashtable(1024);
-console.log(newHash.repeatedWord('Once upon as the het the time, there was a brave princess who...'));
 
 module.exports = Hashtable;
