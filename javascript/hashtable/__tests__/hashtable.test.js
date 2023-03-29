@@ -1,6 +1,7 @@
 'use strict';
 
 const Hashtable = require('../index');
+const { Tree } = require('../../tree/index');
 
 describe('Hashtable', () => {
   it('Sets a value', () => {
@@ -55,6 +56,29 @@ describe('Hashtable', () => {
     const keyHash = (329 * 599) % 38;
 
     expect(newHash.hash(key)).toEqual(keyHash);
+  });
+
+  it('Returns the first repeated word or no match', () => {
+    const newHash = new Hashtable(1024);
+    const match = newHash.repeatedWord('Once upon a time, there was a brave princess who...');
+    const nope = newHash.repeatedWord('Yo what is up?');
+
+    expect(match).toEqual('a');
+    expect(nope).toEqual('No match');
+  });
+
+  it('Returns shared values between two trees', () => {
+    const tree1 = new Tree();
+    tree1.breadthBinaryTreeBuild([150,100,250,75,160,200,350,125,175,300,500]);
+
+    const tree2 = new Tree();
+    tree2.breadthBinaryTreeBuild([42,100,600,15,160,200,350,125,175,4,500]);
+
+    const newHash = new Hashtable(44455);
+    const sharedArray = newHash.treeIntersection(tree1, tree2);
+    sharedArray.sort((a, b) => a - b);
+
+    expect(sharedArray).toEqual([100,125,160,175,200,350,500]);
   });
 
 });
