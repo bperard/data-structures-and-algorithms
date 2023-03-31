@@ -14,7 +14,11 @@ Write a function that LEFT JOINs two hashmaps into a single data structure.
 
 ## Approach & Efficiency
 
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+Space O(n)
+We add another data structure of size n for our return.
+
+Time O(n)
+We traverse through the first hashmap and then use direct lookup to find the value in second hash, and then added the value or null if the key is not present.
 
 ## Solution
 
