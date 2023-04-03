@@ -18,7 +18,7 @@ class Hashtable {
 
   set(key, value) {
     const hashedKey = this.hash(key);
-    this.buckets[hashedKey] = value;
+    this.buckets[hashedKey] = {[key]: value};
   }
 
   get(key) {
@@ -35,9 +35,9 @@ class Hashtable {
 
   keys() {
     const keys = [];
-    this.buckets.forEach((element, index) => {
+    this.buckets.forEach((element) => {
       if (element) {
-        keys.push(index);
+        keys.push(Object.keys(element));
       }
     });
 
@@ -50,12 +50,12 @@ class Hashtable {
     let match = '';
 
     while (i < words.length) {
-      const key = this.hash(words[i]);
-      if (this.buckets[key] === words[i]) {
+      const hashKey = this.hash(words[i]);
+      if (this.buckets[hashKey] === words[i]) {
         match = words[i];
       }
 
-      this.buckets[key] = words[i];
+      this.buckets[hashKey] = words[i];
       i++;
     }
 
@@ -97,7 +97,57 @@ class Hashtable {
     return sharedArray;
   }
 
+  leftJoin(hash1, hash2) {
+    for (let hashKey in hash1.buckets) {
+      this.buckets[hashKey] = [];
+
+      const key = Object.keys(hash1.buckets[hashKey])[0];
+      const value = hash1.buckets[hashKey][key];
+      this.buckets[hashKey].push(key, value);
+
+      if (hash2.buckets[hashKey]) {
+        this.buckets[hashKey].push(hash2.buckets[hashKey][key]);
+      } else {
+        this.buckets[hashKey].push(null);
+      }
+    }
+
+    return this.buckets.filter(element => element);
+  }
+
 }
 
+// const hash1 = {
+//   diligent: 'employed',
+//   fond: 'enamored',
+//   guide: 'usher',
+//   outfit: 'garb',
+//   wrath: 'anger'
+// };
+
+// const hash2 = {
+//   diligent: 'idle',
+//   fond: 'averse',
+//   guide: 'follow',
+//   flow: 'jam',
+//   wrath: 'delight'
+// };
+
+let hash1 = new Hashtable(1024);
+hash1.set('diligent', 'employed');
+hash1.set('fond', 'enamored');
+hash1.set('guide', 'usher');
+hash1.set('outfit', 'garb');
+hash1.set('wrath', 'anger');
+
+let hash2 = new Hashtable(1024);
+hash2.set('diligent', 'idle');
+hash2.set('fond', 'averse');
+hash2.set('guide', 'follow');
+hash2.set('flow', 'jam');
+hash2.set('wrath', 'delight');
+
+const joinHash = new Hashtable(1024);
+console.log(joinHash.leftJoin(hash1, hash2));
 
 module.exports = Hashtable;
