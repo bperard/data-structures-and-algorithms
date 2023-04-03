@@ -40,3 +40,4 @@ To run your tests
 - [Hashmap Repeated Word](./javascript/hashmap-repeated-word/README.md)
 - [Tree Intersection](./javascript/tree-intersection/README.md)
 - [Hashmap Left Join](./javascript/hashmap-left-join/README.md)
+- [Graph](./javascript/graph/README.md)
