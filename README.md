@@ -42,3 +42,4 @@ To run your tests
 - [Hashmap Left Join](./javascript/hashmap-left-join/README.md)
 - [Graph](./javascript/graph/README.md)
 - [Linked List Reverse](./javascript/linked-list-reverse/README.md)
+- [Tree Traversal Reversal](./javascript/tree-traversal-reversal/README.md)
