@@ -45,6 +45,20 @@ class LinkedList {
 
     return found;
   }
+
+  reverse() {
+    let prevNode = null;
+    let currNode = this.head;
+
+    while (currNode) {
+      const temp = currNode.next;
+      currNode.next = prevNode;
+      prevNode = currNode;
+      currNode = temp;
+    }
+
+    this.head = prevNode;
+  }
 }
 
 class Node {

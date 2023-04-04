@@ -57,4 +57,17 @@ describe('Linked List', () => {
     expect(linked.includes('cucumber')).toBe(false);
   });
 
+  it('reverses the linked list', () => {
+    const testLink = new LinkedList();
+    testLink.insert('A');
+    testLink.insert('B');
+    testLink.insert('C');
+    testLink.insert('D');
+
+    testLink.reverse();
+    const revString = testLink.toString();
+
+    expect(revString).toEqual('{ A } -> { B } -> { C } -> { D } -> NULL');
+  });
+
 });
