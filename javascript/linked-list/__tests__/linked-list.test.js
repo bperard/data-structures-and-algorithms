@@ -70,4 +70,68 @@ describe('Linked List', () => {
     expect(revString).toEqual('{ A } -> { B } -> { C } -> { D } -> NULL');
   });
 
+  it('removes values from list', () => {
+    const testLink = new LinkedList();
+    testLink.insert('A');
+    testLink.insert('B');
+    testLink.insert('C');
+    testLink.insert('D');
+    testLink.insert('A');
+
+
+    testLink.removeValue('C');
+    const strDBA = testLink.toString();
+    testLink.removeValue('A');
+    const strDB = testLink.toString();
+    testLink.removeValue('D');
+    testLink.removeValue('B');
+    const nope = testLink.toString();
+
+    expect(strDBA).toEqual('{ A } -> { D } -> { B } -> { A } -> NULL');
+    expect(strDB).toEqual('{ D } -> { B } -> NULL');
+    expect(nope).toEqual('NULL');
+  });
+
+  it('returns midpoint', () => {
+    const testLink = new LinkedList();
+    testLink.insert('E');
+    testLink.insert('D');
+    testLink.insert('C');
+    testLink.insert('B');
+    testLink.insert('A');
+
+    const trueMid = testLink.getMidpoint().value;
+    testLink.removeValue('C');
+
+    const lowMid = testLink.getMidpoint().value;
+    const highMid = testLink.getMidpoint('high').value;
+    let midArr = testLink.getMidpoint('both');
+    midArr = [midArr[0].value, midArr[1].value];
+
+    expect(trueMid).toEqual('C');
+    expect(lowMid).toEqual('B');
+    expect(highMid).toEqual('D');
+    expect(midArr).toEqual(['B', 'D']);
+  });
+
+  it('returns kth node from end', () => {
+    const testLink = new LinkedList();
+    const emptyList = testLink.getKthFromEnd(0);
+
+    testLink.insert('E');
+    testLink.insert('D');
+    testLink.insert('C');
+    testLink.insert('B');
+    testLink.insert('A');
+
+    const tail = testLink.getKthFromEnd(0).value;
+    const within = testLink.getKthFromEnd(4).value;
+    const greaterThan = testLink.getKthFromEnd(5);
+
+    expect(emptyList).toBeNull();
+    expect(tail).toEqual('E');
+    expect(within).toEqual('A');
+    expect(greaterThan).toBeNull();
+  });
+
 });
